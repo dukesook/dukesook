@@ -1,5 +1,17 @@
 ### Hi there 👋
 
+Config Files:
+
+1.  .bashrc
+    - . initialize Terminal
+    - Location: ~
+1.  .starship.toml
+    - Customize Terminal
+    - Location: ~/.config
+1.  .clang-format
+    - Auto-format cpp
+    - Location: ~
+
 <!--
 **dukesook/dukesook** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
