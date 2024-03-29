@@ -1,0 +1,7 @@
+---
+Language: Cpp
+IndentWidth: 8
+ColumnLimit: 0 # no line limit
+PointerAlignment: Left #   int* x  vs  int *x
+
+IncludeBlocks: Merge #combines #includes together
