@@ -8,9 +8,11 @@ Config Files:
 1.  .starship.toml
     - Customize Terminal
     - Location: ~/.config
+    - https://starship.rs/config/
 1.  .clang-format
     - Auto-format cpp
     - Location: ~
+    - https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 
 <!--
 **dukesook/dukesook** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
