@@ -1,1 +1,65 @@
-/home/sook/.config/starship.toml
+# # Get editor completions based on the config schema
+# "$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# # Replace the '❯' symbol in the prompt with '➜'
+# [character] # The name of the module we are configuring is 'character'
+# # success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+# success_symbol = '[\$](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# # Disable the package module, hiding it from the prompt completely
+# # [package]
+# # disabled = false
+
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10000
+
+
+[cmake]
+disabled = false
+# format = "[$path]($style) "
+format = '[$symbol]($style)'
+# style = "bold cyan"  # You can choose your preferred style
+
+[git_branch]
+# symbol = ' '
+format = '- [$branch]($style) '
+
+[c]
+disabled = false
+format = '[$name]($style) '
+
+[nodejs]
+disabled = true
+
+
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+
+# # ~/.config/starship.toml
+
+# # Use custom format
+# format = '''
+# [┌───────────────────>](bold green)
+# [│](bold green)$directory$rust$package
+# [└─>](bold green) '''
+
+
+# # Disable the blank line at the start of the prompt
+# add_newline = false
+
+# # Set 'foo' as custom color palette
+# palette = 'foo'
+
+# # Define custom colors
+# [palettes.foo]
+# # Overwrite existing color
+# blue = '21'
+# # Define new color
+# mustard = '#af8700'
