@@ -150,10 +150,16 @@ create_alias gps "git push";         # Git Push
 create_alias gph "git push";         # Git Push
 create_alias gpl "git pull";         # Git Pull
 create_alias gcm "git commit -am";   # Git Commit Message
+create_alias clip "clip.exe";         # Copy to clipboard e.g. $ echo "Hello" | c
 
-# GLOBAL EXECUTASBLES
-export PATH=~/.npm-global/bin:$PATH # add ~/.npm-global/bin so that npm packages can be run from anywhere. Store global npm packages here.
+
+
+
+# GLOBAL EXECUTABLES
+# The OS looks for directories in the PATH variable to find executables.
+export PATH=~/.npm-global/bin:$PATH # Allows npm packages can be run from anywhere.
 export PATH=$PATH:~/repos/ngiis_generator/build/ # add ngiis_generator to the PATH
+export PATH=$PATH:~/repos/gdal/build/apps/ # add ngiis_generator to the PATH
 
 # alias # Print all aliases
 
