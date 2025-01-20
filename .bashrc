@@ -128,6 +128,35 @@ eval "$(lua ~/.z.lua/z.lua --init bash)"
 
 fortune | cowsay -f tux; # Print a random fortune with a cow saying it
 
+# Directory Starcraft-like Hotkeys
+# c1 to save, 1 to cd
+DIR_FILE="$HOME/.saved_dirs" # File to store directories
+# Load saved directories if the file exists
+if [ -f "$DIR_FILE" ]; then
+    source "$DIR_FILE"
+fi
+for i in {0..9}; do
+    eval "
+    c$i() {
+        export DIR$i=\$(pwd)
+#        echo \"Directory $i saved: \${DIR$i}\"
+        sed -i '/^DIR$i=/d' \$DIR_FILE  # Remove any existing entry for DIR$i
+        echo \"DIR$i=\${DIR$i}\" >> \$DIR_FILE  # Save the new directory to the file
+    }
+
+    $i() {
+        if [ -n \"\${DIR$i}\" ]; then
+            cd \"\${DIR$i}\"
+ #           echo \"Changed to Directory $i: \${DIR$i}\"
+        else
+            echo \"Directory $i is not set\"
+        fi
+    }
+    "
+done
+
+
+
 
 # ALIAS - (in alphabetical order)
 create_alias() {
@@ -150,14 +179,14 @@ create_alias gps "git push";         # Git Push
 create_alias gph "git push";         # Git Push
 create_alias gpl "git pull";         # Git Pull
 create_alias gcm "git commit -am";   # Git Commit Message
-create_alias clip "clip.exe";         # Copy to clipboard e.g. $ echo "Hello" | c
-
+create_alias clip "clip.exe";        # Copy to clipboard e.g. $ echo "Hello" | c
+# create_alias python "python3";       # Python 3
 
 
 
 # GLOBAL EXECUTABLES
 # The OS looks for directories in the PATH variable to find executables.
-export PATH=~/.npm-global/bin:$PATH # Allows npm packages can be run from anywhere.
+# export PATH=~/.npm-global/bin:$PATH # Allows npm packages can be run from anywhere.
 export PATH=$PATH:~/repos/ngiis_generator/build/ # add ngiis_generator to the PATH
 export PATH=$PATH:~/repos/gdal/build/apps/ # add ngiis_generator to the PATH
 
@@ -174,5 +203,17 @@ export PATH=$PATH:~/repos/gdal/build/apps/ # add ngiis_generator to the PATH
 # Global .clang-format file
 export CLANG_FORMAT_STYLE_FILE="~/dukesook/.clang-format"
 
+# Required for MSP PAO
+# export PYTHON_INCLUDE_DIR=/usr/local/include/python3.9
+
+# GStreamer GIMI Plugin
+export GST_PLUGIN_PATH=$GST_PLUGIN_PATH:/home/sook/repos/gst-plugins-rs-gimi/target/debug
+
+# Compliance Warden
+export DEBUG=1
 
 ################################ DUKESOOK ################################
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.cargo/env"
